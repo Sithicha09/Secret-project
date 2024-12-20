@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anniversary Gallery</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        }
+
+        .content-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .content-container h1 {
+            font-size: 2.5em;
+            color: #ff6f61;
+        }
+
+        .content-container p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .heart-btn {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6f61;
+            display: inline-block;
+            transform: rotate(-45deg);
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease-in-out;
+            margin: 20px auto;
+        }
+
+        .heart-btn:before,
+        .heart-btn:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: #ff6f61;
+            border-radius: 50%;
+        }
+
+        .heart-btn:before {
+            top: -25px;
+            left: 0;
+        }
+
+        .heart-btn:after {
+            top: 0;
+            left: 25px;
+        }
+
+        .heart-btn:hover {
+            transform: rotate(-45deg) scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content-container">
+        <h1>Happy 2 month anniversary!</h1>
+        <p>อันนี้แถมๆ</p>
+
+        <div class="gallery-container">
+            
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/24998.jpg" alt="Image 1">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/24999.jpg" alt="Image 2">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25001.jpg" alt="Image 3">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25002.jpg" alt="Image 4">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25003.jpg" alt="Image 5">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25004.jpg" alt="Image 6">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25005.jpg" alt="Image 7">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25006.jpg" alt="Image 8">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25007.jpg" alt="Image 9">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25008.jpg" alt="Image 10">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25019.jpg" alt="Image 11">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25010.jpg" alt="Image 12">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25011.jpg" alt="Image 13">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25012.jpg" alt="Image 14">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25013.jpg" alt="Image 15">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25014.jpg" alt="Image 16">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25015.jpg" alt="Image 17">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25016.jpg" alt="Image 18">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25017.jpg" alt="Image 19">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25018.jpg" alt="Image 20">
+            </div>
+            <div class="gallery-item" onclick="openModal(this)">
+                <img src="../img/25020.jpg" alt="Image 21">
+            </div>
+
+        </div>
+
+        <p>หมดแล้วค้าบบบบ</p>
+
+        <div class="heart-btn" onclick="goNext()"></div>
+    </div>
+
+    <!-- Modal สำหรับแสดงรูปขนาดใหญ่ -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Full Size Image">
+    </div>
+
+
+
+    <script>
+        function openModal(element) {
+            const imgSrc = element.querySelector('img').src;
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+
+            modalImage.src = imgSrc;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+        }
+
+        function goNext() {
+            window.location.href = "test2heart.html"; // เปลี่ยนเส้นทางไปยังหน้าใหม่
+        }
+    </script>
+</body>
+
+</html>
